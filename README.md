@@ -9,7 +9,11 @@ Clone repository and use command `make` to compile source file from the director
 
 ## Running
 
-        Enter the command "./sudoku [filename]" where the filename is a valid sudoku file.
+Enter the command 
+
+`./sudoku [filename]` 
+
+The "filename" must be a valid sudoku file.
 
 ## Sudoku Files
 
