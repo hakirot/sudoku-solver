@@ -5,7 +5,7 @@
 
 Clone repository and use command `make` to compile source file from the directory containing the makefile, or use the following command with gcc or a similar C++ compiler:
 
-    `gcc -std=c99 -o sudoku sudoku.c`
+`gcc -std=c99 -o sudoku sudoku.c`
 
 ## Running
 
