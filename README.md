@@ -13,33 +13,32 @@ Enter the command
 
 `./sudoku [filename]` 
 
-The "filename" must be a valid sudoku file.
+The filename must be a valid sudoku file.
 
 ## Sudoku Files
 
-        Sudoku puzzle files are included, but they follow a simple structure.
+Example sudoku puzzle files are included in this repository, they are simple files that follow a basic structure.
 
-        They are simple text files of a 9x9 grid with integers from 1-9 for given numbers
-        and 'x's for any space that will be represented by a blank, giving the user spaces
-        to solve.
+These are simple text files with a 9x9 grid with integers from 1-9 for given numbers
+and 'x's for any spaces that need to be solved.
 
-        Sudoku files must be exactly 9 lines long with 9 characters on each line separated by
-        spaces, program will likely not behave properly if custom sudoku files do not match
-        format.
+Sudoku files must be exactly 9 lines long with 9 characters on each line separated by
+spaces, program will likely not behave properly if custom sudoku files do not match
+format.
 
-        Example:
+Example:
 
-        ----START OF FILE-->x 3 x x 1 x x 6 x>EOL
-                            7 5 x x 3 x x 4 8>EOL
-                            x x 6 9 8 4 3 x x>EOL
-                            x x 3 x x x 8 x x>EOL
-                            9 1 2 x x x 6 7 4>EOL
-                            x x 4 x x x 5 x x>EOL
-                            x x 1 6 7 5 2 x x>EOL
-                            6 8 x x 9 x x 1 5>EOL
-                            x 9 x x 4 x x 3 x>EOF <-----END OF FILE-----
+    ----START OF FILE-->x 3 x x 1 x x 6 x>EOL
+                        7 5 x x 3 x x 4 8>EOL
+                        x x 6 9 8 4 3 x x>EOL
+                        x x 3 x x x 8 x x>EOL
+                        9 1 2 x x x 6 7 4>EOL
+                        x x 4 x x x 5 x x>EOL
+                        x x 1 6 7 5 2 x x>EOL
+                        6 8 x x 9 x x 1 5>EOL
+                        x 9 x x 4 x x 3 x>EOF <-----END OF FILE-----
 
-        [To test the most basic functionality of the program, I recommend ./sudoku test.su]
+[To test the most basic functionality of the program, I recommend ./sudoku test.su]
 
     To Play:
 
