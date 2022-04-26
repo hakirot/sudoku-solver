@@ -3,8 +3,8 @@
 
 ## Compiling
 
-        Enter command "make" within the directory containing the source file, sudoku.c,
-        and the Makefile.
+Enter command "make" within the directory containing the source file, sudoku.c,
+and the Makefile.
 
 ## Running
 
