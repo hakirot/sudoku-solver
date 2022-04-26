@@ -3,8 +3,8 @@
 
 ## Compiling
 
-Enter command "make" within the directory containing the source file, sudoku.c,
-and the Makefile.
+Clone repository and use command `make` to compile source file, or use the following command with gcc or similar C++ compiler
+		gcc -std=c99 -o sudoku sudoku.c
 
 ## Running
 
