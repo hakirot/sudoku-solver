@@ -17,9 +17,9 @@ The filename must be a valid sudoku file.
 
 ## Sudoku Files
 
-Example sudoku puzzle files are included in this repository; they are simple files that follow a basic structure, containing a 9x9 grid with integers from 1-9 for given numbers and 'x's for any spaces that must be solved.
+Example sudoku puzzle files are included in this repository. They are simple files that follow a basic structure, containing a 9x9 grid with integers from 1-9 for given numbers and 'x's for any spaces that must be solved.
 
-Sudoku files must be exactly 9 lines long with 9 characters on each line separated by spaces, program will likely not behave properly if custom sudoku files do not match format.
+Sudoku files must be exactly 9 lines long with 9 characters on each line separated by spaces, the program will not behave properly if the files do not match the specified format.
 
 Example:
 
@@ -33,9 +33,9 @@ Example:
                         6 8 x x 9 x x 1 5>EOL
                         x 9 x x 4 x x 3 x>EOF <-----END OF FILE-----
 
-[To test the most basic functionality of the program, I recommend ./sudoku test.su]
+To test the most basic functionality of the program, I recommend ./sudoku test.su
 
-    To Play:
+## Playing
 
         Follow the instructions provided on the main page. Simply enter 5-character strings
         containing 3 values separated by two spaces. Respectively, these values represent
