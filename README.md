@@ -1,5 +1,5 @@
 
-- = S U D O K U     S O L V E R = -
+#Sudoku Solver
 
     To Compile:
 
