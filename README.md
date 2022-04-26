@@ -1,16 +1,16 @@
 
 # Sudoku Solver
 
-    To Compile:
+## Compiling
 
         Enter command "make" within the directory containing the source file, sudoku.c,
         and the Makefile.
 
-    To Run:
+## Running
 
         Enter the command "./sudoku [filename]" where the filename is a valid sudoku file.
 
-    Sudoku Files:
+## Sudoku Files
 
         Sudoku puzzle files are included, but they follow a simple structure.
 
