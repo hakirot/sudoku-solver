@@ -17,14 +17,9 @@ The filename must be a valid sudoku file.
 
 ## Sudoku Files
 
-Example sudoku puzzle files are included in this repository, they are simple files that follow a basic structure.
+Example sudoku puzzle files are included in this repository; they are simple files that follow a basic structure, containing a 9x9 grid with integers from 1-9 for given numbers and 'x's for any spaces that must be solved.
 
-These are simple text files with a 9x9 grid with integers from 1-9 for given numbers
-and 'x's for any spaces that need to be solved.
-
-Sudoku files must be exactly 9 lines long with 9 characters on each line separated by
-spaces, program will likely not behave properly if custom sudoku files do not match
-format.
+Sudoku files must be exactly 9 lines long with 9 characters on each line separated by spaces, program will likely not behave properly if custom sudoku files do not match format.
 
 Example:
 
