@@ -51,28 +51,28 @@ Ex.
 
 Otherwise, press 'm' (followed by [enter]) to open the menu. Menu options are:
 
-1. Reset Puzzle
+###1. Reset Puzzle
     
 This resets the puzzle to the state it was in when the program first began
 
-2. Solve This Puzzle For Me
+###2. Solve This Puzzle For Me
 
 This option will solve the puzzle using a recursive backtracing algorithm (explained below)
 
 [Program behaviour is indefined for custom unsolvable puzzles uploaded by user]
 
-3. Resume Puzzle (exit menu)
+###3. Resume Puzzle (exit menu)
 
 This simply places the user back to the main interface.
 
-4. Check My Solution
+###4. Check My Solution
 
 This will run the Check Solution algorithm, If the puzzle is yet unsolved, the
 user is notified of such on the main screen just above the command prompt. If
 the puzzle is solved, a simple congratulatory message is displayed before the 
 program terminates.
 
-5. Quit Game
+###5. Quit Game
 
 Exits Program immediately.
 
