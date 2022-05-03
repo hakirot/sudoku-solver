@@ -59,7 +59,7 @@ This resets the puzzle to the state it was in when the program first began
 
 This option will solve the puzzle using a recursive backtracing algorithm (explained below)
 
-[Program behaviour is indefined for custom unsolvable puzzles uploaded by user]
+-> [Program behavior is indefined for custom unsolvable puzzles uploaded by user]
 
 ### 3. Resume Puzzle (exit menu)
 
@@ -77,7 +77,9 @@ program terminates.
 Exits Program immediately.
 
 
-Thanks For Playing!
+> Thanks For Playing!
 > hakirot
 
+## Solving Algorithm
 
+Traditional Sudoku, existing in a 9x9 grid, is a game that can be solved in what is commonly referred to among computer scientists as "constant" or O(1) time. This can be accomplished by generating (or referencing) a list, dictionary, or 2D array of every possible configuration of integers between 1 and 9 that can exist in a sudoku grid
