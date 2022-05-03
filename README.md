@@ -82,4 +82,5 @@ Exits Program immediately.
 
 ## Solving Algorithm
 
-Traditional Sudoku, existing in a 9x9 grid, is a game that can be solved in what is commonly referred to among computer scientists as "constant" or O(1) time. This can be accomplished by generating (or referencing) a list, dictionary, or 2D array of every possible configuration of integers between 1 and 9 that can exist in a sudoku grid
+Traditional Sudoku, existing in a 9x9 grid, is a game that can be solved in what is commonly referred to among computer scientists as "constant" or O(1) time. This can be accomplished by generating (or referencing) a list, dictionary, or 2D array of every possible configuration of integers between 1 and 9 that are allowed to exist by the rules of a solvable Sudoku grid, and then searching that list for a set that matches the placements of integers for the particular puzzle that you are trying to solve. However, because there are 6.6x10^21 (6.6 sextillion) possible solvable grids, a different (less memory intensive) approach is used.
+
