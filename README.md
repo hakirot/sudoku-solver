@@ -7,9 +7,9 @@ Clone repository and use command `make` to compile source file from the director
 
 `gcc -std=c99 -o sudoku sudoku.c`
 
-## Running
+## Running (Linux)
 
-Enter the command 
+Simply enter this command after compiling in the same directory as the source file:
 
 `./sudoku [filename]` 
 
@@ -33,49 +33,51 @@ Example:
                         6 8 x x 9 x x 1 5>EOL
                         x 9 x x 4 x x 3 x>EOF <-----END OF FILE-----
 
-To test the most basic functionality of the program, I recommend ./sudoku test.su
+To test the basic functionality of the program, example sudoku files are provided
+
+    ./sudoku test.su
 
 ## Playing
 
-        Follow the instructions provided on the main page. Simply enter 5-character strings
-        containing 3 values separated by two spaces. Respectively, these values represent
-        the x-coordinate, or column containing the value you wish to change, followed by the
-        y-coordinate, or row which contains the value you wish to change, and then the value
-        (1 through 9) you would like to place on that tile in the grid.
+Follow the instructions provided on the main page. Simply enter 5-character strings
+containing 3 values separated by two spaces. Respectively, these values represent
+the x-coordinate, or column containing the value you wish to change, followed by the
+y-coordinate, or row which contains the value you wish to change, and then the value
+(1 through 9) you would like to place on that tile in the grid.
 
-        Ex.
+Ex.
 
-            > 4 5 6 [enter]
+    > 4 5 6 [enter]
 
-        Otherwise, press 'm' (followed by [enter]) to open the menu. Menu options are:
+Otherwise, press 'm' (followed by [enter]) to open the menu. Menu options are:
 
-            1. Reset Puzzle
-                
-                This resets the puzzle to the state it was in when the program first began
+    1. Reset Puzzle
+        
+        This resets the puzzle to the state it was in when the program first began
 
-            2. Solve This Puzzle For Me
+    2. Solve This Puzzle For Me
 
-                This option will solve the puzzle and exit the program.
+        This option will solve the puzzle and exit the program.
 
-                [Program behaviour is indefined for custom unsolvable puzzles uploaded by user]
+        [Program behaviour is indefined for custom unsolvable puzzles uploaded by user]
 
-            3. Resume Puzzle (exit menu)
+    3. Resume Puzzle (exit menu)
 
-                This simply places the user back to the main interface.
+        This simply places the user back to the main interface.
 
-            4. Check My Solution
+    4. Check My Solution
 
-                This will run the Check Solution algorithm, If the puzzle is yet unsolved, the
-                user is notified of such on the main screen just above the command prompt. If
-                the puzzle is solved, a simple congratulatory message is displayed before the 
-                program terminates.
+        This will run the Check Solution algorithm, If the puzzle is yet unsolved, the
+        user is notified of such on the main screen just above the command prompt. If
+        the puzzle is solved, a simple congratulatory message is displayed before the 
+        program terminates.
 
-            5. Quit Game
+    5. Quit Game
 
-                Exits Program immediately.
+        Exits Program immediately.
 
 
-    Thanks For Playing!
-                    > hakirot
+Thanks For Playing!
+            > hakirot
 
 
