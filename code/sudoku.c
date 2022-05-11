@@ -221,8 +221,8 @@ int checkSquare(int x, int y, int num, int sudoku[9][9]){
     }
 
     // Starting at top-left corner, iterate through all nine squares checking repeats
-    for(int i = x; i < x+3; i++){
-        for(int j = y; j < y+3; j++){
+    for(int i = x; i < x + 3; i++){
+        for(int j = y; j < y + 3; j++){
             if(sudoku[i][j] == num) {
                 return 1;
             }
@@ -278,11 +278,13 @@ int solvePuzzle(int sudoku[9][9], int x, int y){
     
     // Begin finding solution for current blank space
     if(sudoku[x][y] == 0){
+
         // Try all nine integers at current space
         while (num < 10) {
-            // Only use integers that meet sudoku rules
+
+            // Check if the num already exists in the row/column/square
             if(!checkSquare(x, y, num, sudoku) && !checkRow(y, num, sudoku) && !checkCol(x, num, sudoku)){
-                // Place integet at current space
+                // Place integer at current space
                 sudoku[x][y] = num;
 
                 // Final case: Reached last tile while passing sudoku rules
@@ -307,11 +309,12 @@ int solvePuzzle(int sudoku[9][9], int x, int y){
                 if(solvePuzzle(sudoku, vx, vy)){
                     return 1;
                 }
-                // If the function doesn't work, we backtrack to the next num in while loop
+                // If the test num doesn't work, we backtrack to the next num in while loop
             }
             // Increment to try next integer in same place using preserved x/y
             num++;
         }
+
         // Reset to 0 because none of the numbers in this tree were solvable,
         // return to parent call and try next num
         sudoku[x][y] = 0;
