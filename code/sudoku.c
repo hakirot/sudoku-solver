@@ -16,12 +16,12 @@ int checkRow(int, int, int sudoku[9][9]);
 int checkSquare(int, int, int, int sudoku[9][9]);
 int checkSingleSquare(int, int, int sudoku[9][9]);
 int getInput(char *);
-void printGrid(int sudoku[9][9], int error);
+void printGrid(int sudoku[9][9], int error, int savestate[9][9]);
 void readFile(int sudoku[9][9], char *);
 void play(int sudoku[9][9]);
 int validate(char [], int, int savestate[9][9]);
 int checkSolution(int sudoku[9][9]);
-int solvePuzzle(int sudoku[9][9], int, int);
+int solvePuzzle(int sudoku[9][9], int, int, int savestate[9][9]);
 
 // MAIN - Starting point of program
 // @params
@@ -238,7 +238,7 @@ int checkSquare(int x, int y, int num, int sudoku[9][9]){
 // - sudoku - a 9x9 sudoku grid to be solved
 // - int x - current x position in solution tree
 // - int y - current y position in solution tree
-int solvePuzzle(int sudoku[9][9], int x, int y){
+int solvePuzzle(int sudoku[9][9], int x, int y, int savestate[9][9]){
 
     int num = 1;
 
@@ -268,7 +268,7 @@ int solvePuzzle(int sudoku[9][9], int x, int y){
         }
 
         // Recursively call solver on the next space because current space is a given
-        if(solvePuzzle(sudoku, x, y)) {
+        if(solvePuzzle(sudoku, x, y, savestate)) {
             return 1;
         }
         else{
@@ -286,6 +286,9 @@ int solvePuzzle(int sudoku[9][9], int x, int y){
             if(!checkSquare(x, y, num, sudoku) && !checkRow(y, num, sudoku) && !checkCol(x, num, sudoku)){
                 // Place integer at current space
                 sudoku[x][y] = num;
+
+                // Live feed of solving!
+                printGrid(sudoku, 11, savestate);
 
                 // Final case: Reached last tile while passing sudoku rules
                 if(x == 8 && y == 8) {
@@ -306,7 +309,7 @@ int solvePuzzle(int sudoku[9][9], int x, int y){
                     }
                 }
                 // Test next position
-                if(solvePuzzle(sudoku, vx, vy)){
+                if(solvePuzzle(sudoku, vx, vy, savestate)){
                     return 1;
                 }
                 // If the test num doesn't work, we backtrack to the next num in while loop
@@ -328,7 +331,7 @@ int solvePuzzle(int sudoku[9][9], int x, int y){
 // @params
 //  - sudoku - current 9x9 sudoku grid the user is playing with
 //  - error - error number to be printed along with grid UI
-void printGrid(int sudoku[9][9], int error){
+void printGrid(int sudoku[9][9], int error, int savestate[9][9]){
 
     // Array of errors for printing with UI
     char errors[10][100] = {
@@ -372,12 +375,7 @@ void printGrid(int sudoku[9][9], int error){
         "",
     };
 
-    // clear screen
-    /*
-    for(int i = 0; i < 80; i++){
-        printf("\n");
-    }
-    */
+    printf("\n");
     system("clear");
 
     // Check if the menu has been requested
@@ -389,6 +387,8 @@ void printGrid(int sudoku[9][9], int error){
     else{
         printf("\t\t\t   - = S U D O K U = -  \t\t\t%s\n\n", inst[0]);
     }
+
+
     printf("\t\t\t+-------+-------+-------+");
 
     // Begin printing bulk of screen
@@ -406,7 +406,23 @@ void printGrid(int sudoku[9][9], int error){
             }
             // Otherwise print given numbers
             else{
-                printf(" %d", sudoku[i][j]);
+
+                if(error == 10){
+                    printf("\033[0;32m");
+                }
+
+                if(sudoku[i][j] == savestate[i][j] && error != 11){
+                    printf("\033[0;32m");
+                    printf(" %d", sudoku[i][j]);
+                    printf("\033[0;0m");
+                }
+                else{
+                    printf(" %d", sudoku[i][j]);
+                }
+
+                if(error == 10){
+                    printf("\033[0;0m");
+                }
             }
             // Print grid separators
             if((j + 1) % 3 == 0){
@@ -432,6 +448,7 @@ void printGrid(int sudoku[9][9], int error){
     printf("\n\t\t\t\t\t\t\t    %s", errors[error]);
     // X-Axis
     printf("\n\t\t\t  1 2 3   4 5 6   7 8 9\t\t> ");
+
 }
 
 // PLAY - Initializes the game
@@ -472,7 +489,7 @@ void play(int sudoku[9][9]){
         }
 
         // Print grid to screen
-        printGrid(sudoku, error);
+        printGrid(sudoku, error, savestate);
 
         // Get user input and validate
         memset(input, '\0', 64);
@@ -485,7 +502,7 @@ void play(int sudoku[9][9]){
             // Keep printing until input is properly inputted
             while(error != 0){
 
-                printGrid(sudoku, error);
+                printGrid(sudoku, error, savestate);
 
                 memset(input, '\0', 64);
                 fgets(input, 63, stdin);
@@ -501,14 +518,14 @@ void play(int sudoku[9][9]){
         // Enter the menu
         if (error == 9){
 
-            printGrid(sudoku, error);
+            printGrid(sudoku, error, savestate);
             memset(input, '\0', 64);
             fgets(input, 63, stdin);
 
 
             while(validate(input, 2, savestate) != 0){
 
-                printGrid(sudoku, error);
+                printGrid(sudoku, error, savestate);
                 memset(input, '\0', 64);
                 fgets(input, 63, stdin);
 
@@ -534,9 +551,13 @@ void play(int sudoku[9][9]){
                         //message = 1;
                     }
                 }
-                solved = solvePuzzle(sudoku, 0, 0);
-                printGrid(sudoku, 9);
-                printf("\n\n\t\t\t\tPuzzle has been solved by computer!\n(exited)\n");
+                solved = solvePuzzle(sudoku, 0, 0, savestate);
+                printGrid(sudoku, 10, savestate);
+
+                printf("\033[0;32m");
+                printf("\n\n\t\t\t\tPuzzle has been solved by computer!");
+                printf("\033[0;0m");
+                printf("\n(exited)\n");
             }
 
             // Check solution
@@ -545,7 +566,10 @@ void play(int sudoku[9][9]){
                 solved = checkSolution(sudoku);
 
                 if(solved == 1){
-                    printf("\n\t\t\t\t\tYou've done it!\nThx4Playing!\n(exited)\n");
+                    printf("\033[0;32m");
+                    printf("\n\t\t\t\t\tYou've done it!\nThx4Playing!\n");
+                    printf("\033[0;0m");
+                    printf("\n(exited)\n");
                 }
                 else{
                     message = 2;
