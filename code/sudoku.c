@@ -335,7 +335,7 @@ void printGrid(int sudoku[9][9], int error){
         ">>> Input Error: Invalid character string <<<",
         "> Sudoku numbers given at start cannot be changed <",
         "Puzzle Reset!",
-        "> Puzzle has not been solved <",
+        "> Puzzle has NOT been solved! <",
         "",
         "",
         "",
@@ -370,9 +370,12 @@ void printGrid(int sudoku[9][9], int error){
     };
 
     // clear screen
+    /*
     for(int i = 0; i < 80; i++){
         printf("\n");
     }
+    */
+    system("clear");
 
     // Check if the menu has been requested
     if(error == 9){
@@ -439,7 +442,7 @@ void play(int sudoku[9][9]){
     int error = 0;
     int message = 0;
 
-    // Create savestate for reload
+    // Create savestate for resetting the grid to start
     int savestate[9][9];
     for(int i = 0 ; i < 9; i++){
         for(int j = 0; j < 9; j++){
@@ -490,7 +493,6 @@ void play(int sudoku[9][9]){
                     break;
                 }
             }
-
         }
 
         // Enter the menu
@@ -522,7 +524,7 @@ void play(int sudoku[9][9]){
             // Solve Puzzle!
             if(input[0] == '2'){
 
-                // Reset board
+                // Reset board to solve the puzzle
                 for (int i = 0; i < 9; i++){
                     for (int j = 0; j < 9; j++){
                         sudoku[i][j] = savestate[i][j];
@@ -583,28 +585,34 @@ void play(int sudoku[9][9]){
 //  - 0 if unsolved, 1 if solved
 int checkSolution(int sudoku[9][9]){
 
+    // This array will be populated with the ints from the user's sudoku grid in each row/col in ascending order before being checked
     int array[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     // Check that all rows do not have repeated integers
     for (int i = 0; i < 9; i++){
         for (int j = 0; j < 9; j++){
+
+            // Check for any blank spaces
             if(sudoku[i][j] == 0){
                 return 0;
             }
+            // Place the integer in the array in sorted order
             else{
                 array[sudoku[i][j] - 1] = sudoku[i][j];
             }
         }
 
-        // Check array
+        // Check that the array contains the ints 1-9 in ascending order
         for(int j = 0; j < 9; j++){
+            // ex. '1' should be in the zeroeth slot
             int k = j + 1;
             if(array[j] != k){
+                // fail
                 return 0;
             }
         }
 
-        //reset array
+        // reset array
         for(int j = 0; j < 9; j++){
             array[j] = 0;
         }
@@ -613,6 +621,7 @@ int checkSolution(int sudoku[9][9]){
     // Check that all columns do not have repeated integers
     for (int i = 0; i < 9; i++){
         for (int j = 0; j < 9; j++){
+            // Same logic checked by the column inverse
             array[sudoku[j][i] - 1] = sudoku[j][i];
         }
 
@@ -624,7 +633,7 @@ int checkSolution(int sudoku[9][9]){
             }
         }
 
-        //reset array
+        // reset array
         for(int j = 0; j < 9; j++){
             array[j] = 0;
         }
@@ -676,7 +685,7 @@ int checkSingleSquare(int y, int x, int sudoku[9][9]){
     // Extract all nine integers and place in array in order
     for(int i = y; i < y + 3; i++){
         for(int j = x; j < x + 3; j++){
-
+            // Ensure each box contains each in 1-9
             array[sudoku[i][j] - 1] = sudoku[i][j];
         }
     }
