@@ -1,6 +1,8 @@
 
 # Sudoku Solver
 
+![sudoku-gif](https://media3.giphy.com/media/z6etLDnfNk710JdEfR/giphy.gif)
+
 ## Compiling
 
 Clone repository and use command `make` to compile source file from the directory containing the makefile, or use the following command with gcc or a similar C language compiler:
@@ -87,5 +89,3 @@ Traditional Sudoku, existing in a 9x9 grid, is a game that can be solved in what
 ### Recursive Backtracing
 
 The recursive function that is used to solve any solvable sudoku grid is written in sudoku.c on line 241 using a brute force method that recursively attempts to write the integers from 1 through 9 in each square, linearly, until the rules of Sudoku are broken. At this time, the recursive calls return until the Sudoku grid is once again stable, and the next iterative integer is written in the tile/space. This continues in a tree-like fashion until the entire grid is solved.
-
-![sudoku-gif](https://media3.giphy.com/media/z6etLDnfNk710JdEfR/giphy.gif)
